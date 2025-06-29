@@ -14,6 +14,9 @@ This project demonstrates a Kafka-based messaging system using **two Spring Boot
 
 ---
 
+``bash
+.
+
 ## 🧱 Project Structure
 
 kafka-stream/
