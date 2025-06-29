@@ -15,7 +15,7 @@ This project demonstrates a Kafka-based messaging system using **two Spring Boot
 ---
 
 ## 🧱 Project Structure
-
+```text
 kafka-stream/
 ├── producer_service/ # Spring Boot Kafka Producer
 │ └── Dockerfile
