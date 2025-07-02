@@ -22,10 +22,10 @@ public class KafkaProducer {
     @PostMapping("/send")
     public String sendMessage(@RequestParam String message){
         Random random=new Random();
-        RiderLocation   location=new RiderLocation("rider123", random.nextFloat()*random.nextInt(1,100), random.nextFloat()*random.nextInt(1,100));
+//        RiderLocation   location=new RiderLocation("rider123", random.nextFloat()*random.nextInt(1,100), random.nextFloat()*random.nextInt(1,100));
 
-        this.kafkaTemplate.send("my-new-topic","Message : "+message+" Rider location : "+location.toString());
-        return "Message sent : "+location.toString();
+        this.kafkaTemplate.send("my-new-topic","Message : "+message);
+        return "Message sent : "+ message;
 
     }
 

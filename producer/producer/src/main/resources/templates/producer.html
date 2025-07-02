@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kafka Message Producer</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .response {
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Send Message to Kafka</h2>
+    <form id="messageForm">
+        <label for="message"></label><input type="text" id="message" name="message" placeholder="Enter your message" required />
+        <button type="submit">Send Message</button>
+    </form>
+    <div class="response" id="responseText"></div>
+</div>
+
+<script>
+    document.getElementById("messageForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const message = document.getElementById("message").value;
+
+        fetch("/api/send?message=" + encodeURIComponent(message), {
+            method: "POST"
+        })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("responseText").textContent = data;
+            document.getElementById("message").value = "";
+        })
+        .catch(error => {
+            document.getElementById("responseText").textContent = "Error sending message.";
+        });
+    });
+</script>
+
+</body>
+</html>

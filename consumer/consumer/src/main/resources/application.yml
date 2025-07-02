@@ -3,6 +3,7 @@ spring:
     name: consumer
 
   kafka:
+    bootstrap-servers: ${BOOTSTRAP_SERVERS:kafka:29092}
     consumer:
 #      bootstrap-servers: localhost:9092
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
